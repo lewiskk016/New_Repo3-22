@@ -58,4 +58,42 @@ end
 
 a = [1, [2], [3, [4]]]
 
-p deep_dup(a)
+# p deep_dup(a)
+
+def fibonacci(n)
+    return [] if n == 0
+    return [0] if n == 1
+    return [0, 1] if n == 2
+
+    prev = fibonacci(n-1)
+    prev << prev[-1] + prev[-2]
+end
+
+# p fibonacci(14)
+
+def bsearch(array, ele)
+    mid_idx = array.length / 2
+
+    return mid_idx if array[mid_idx] == ele
+    return nil if array.count == 1 && array[0] != ele
+
+
+
+    if ele < array[mid_idx]
+        bsearch(array[0...mid_idx], ele)
+    else
+        if bsearch(array[(mid_idx + 1)..-1], ele).is_a?(Integer)
+            (mid_idx + 1) + bsearch(array[(mid_idx + 1)..-1], ele)
+        else
+            nil #the if/else and line 85 are to kick 'nil' up from base case on line 78 if ele is not in array
+        end
+    end
+end
+
+p bsearch([1, 2, 3], 1) # => 0
+p bsearch([2, 3, 4, 5], 3) # => 1
+p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 3, 4, 5, 9], 5) # => 3
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
