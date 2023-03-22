@@ -34,9 +34,28 @@ def exp(b, n)
 
 end
 
-# p exp(2,2) #4
+
 # p exp(2,4) #16
 # p exp(2,8) #516
 # p exp(3,2) #9
 # p exp(2,6)
+#  +=
+def deep_dup(arr)
+    # return [] if arr.empty?
 
+    # holder = deep_dup(arr[..-1])
+    new_arr = []
+    # new_arr += arr[0] + holder
+    arr.each do |ele|
+        if ele.is_a?(Array)
+            new_arr << deep_dup(ele)
+        else
+            new_arr << ele
+        end
+    end
+    new_arr
+end
+
+a = [1, [2], [3, [4]]]
+
+p deep_dup(a)
