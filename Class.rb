@@ -1,4 +1,4 @@
-
+require "byebug"
 def range(a, b)
     return [] if a == b
     # return [] if b == a + 1
@@ -90,10 +90,48 @@ def bsearch(array, ele)
     end
 end
 
-p bsearch([1, 2, 3], 1) # => 0
-p bsearch([2, 3, 4, 5], 3) # => 1
-p bsearch([2, 4, 6, 8, 10], 6) # => 2
-p bsearch([1, 3, 4, 5, 9], 5) # => 3
-p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+# p bsearch([1, 2, 3], 1) # => 0
+# p bsearch([2, 3, 4, 5], 3) # => 1
+# p bsearch([2, 4, 6, 8, 10], 6) # => 2
+# p bsearch([1, 3, 4, 5, 9], 5) # => 3
+# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+
+def merge_sort(arr)
+    # debugger
+    new_array = []
+    mid_idx = arr.length / 2
+    return arr if arr.count == 1
+
+
+    left_arr = merge_sort(arr[0..mid_idx - 1])
+    right_arr = merge_sort(arr[mid_idx..-1])
+    # if left_arr.count == 1
+        new_array << left_arr
+
+    #     # merge_sort(left_arr)
+    # end
+    # if right_arr.count == 1
+        new_array << right_arr
+
+    #     # merge_sort(right_arr)
+    # end
+end
+
+# p merge_sort([1, 21, 2, 4, 5])
+
+def merge(arr)
+ new_array = []
+
+    (0...arr.length - 1)
+    i = 1
+    if i.odd?
+        if arr[i] > arr[i - 1]
+            new_array <
+        end
+    end
+end
+
+#at line 131 we use arr.pop() the first ele so we can continually
+#compare first elements.
